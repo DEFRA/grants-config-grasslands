@@ -22,7 +22,38 @@
     "setup:husky": "node -e \"try { (await import('husky')).default() } catch (e) { if (e.code !== 'ERR_MODULE_NOT_FOUND') throw e }\" --input-type module",
     "start": "NODE_ENV=production node . --env-file-if-exists=.env",
     "test": "TZ=UTC vitest run --coverage",
-    "test:watch": "TZ=UTC vitest"
+    "test:watch": "TZ=UTC vitest",
+    "github:release": "npx cdp-github-release grants-config-grasslands",
+    "version:changed": "changeset version",
+    "version": "changeset"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DEFRA/grants-config-grasslands.git"
+  },
+  "release-it": {
+    "npm": {
+      "publish": false
+    },
+    "github": {
+      "release": true,
+      "releaseName": "${version}",
+      "releaseNotes": "echo ''"
+    },
+    "git": {
+      "commitMessage": "Tagged grants-config-grasslands ${version}",
+      "tagName": "${version}",
+      "requireCleanWorkingDir": false,
+      "commitArgs": [
+        "--no-verify"
+      ]
+    }
+  },
+  "bin": {
+    "cdp-github-release": "ci/release-it.sh"
   },
   "imports": {
     "#/*": "./src/*"
@@ -32,6 +63,7 @@
   "dependencies": {
     "@defra/cdp-auditing": "0.6.0",
     "@defra/cdp-metrics": "0.6.0",
+    "@defra/grants-config-utils": "0.4.0",
     "@defra/hapi-secure-context": "0.4.0",
     "@defra/hapi-tracing": "1.30.0",
     "@elastic/ecs-pino-format": "1.5.0",
@@ -50,13 +82,15 @@
     "undici": "7.28.0"
   },
   "devDependencies": {
-    "@vitest/coverage-v8": "4.1.4",
+    "@changesets/changelog-github": "0.7.0",
+    "@changesets/cli": "2.31.0",
+    "@vitest/coverage-v8": "4.1.9",
     "eslint": "9.39.2",
     "husky": "9.1.7",
     "neostandard": "0.13.0",
     "npm-run-all": "4.1.5",
     "prettier": "3.8.2",
-    "vitest": "4.1.4",
+    "vitest": "4.1.9",
     "vitest-fetch-mock": "0.4.5"
   }
 }
