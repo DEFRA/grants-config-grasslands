@@ -292,6 +292,11 @@ pages:
           <p class="govuk-inset-text">There's no guarantee you'll receive a grant</p>
           <p class="govuk-body">Please note that these figures are correct as at the Agreement Start Date and may vary as a result of the processes set out in the <a href="#" rel="noreferrer noopener" target="_blank">Capital grants agreements: Terms and conditions 2026 (opens in new tab)</a>. Examples of where the figures may change include amendments to the size of a parcel and adjustments to a payment rate to eliminate duplicate environmental payments.</p>
 
+  - title: You must have consent
+    path: /you-must-have-consent
+    controller: ConsentPageController
+    id: d11421c1-193c-4c22-ba46-54a6696ff6ce
+
   - title: Submit your application
     id: 18514e4f-8615-4585-81ae-6e74e5d45def
     path: /declaration
