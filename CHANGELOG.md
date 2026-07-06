@@ -1,5 +1,11 @@
 # grants-config-grasslands
 
+## 0.2.0
+
+### Minor Changes
+
+- af2c227: remove temp change
+
 ## 0.1.1
 
 ### Patch Changes
