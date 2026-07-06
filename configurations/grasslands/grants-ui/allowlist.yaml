@@ -1,3 +1,12 @@
+dev:
+  allowAll: true
+
+test:
+  allowAll: true
+
+perf-test:
+  allowAll: true
+
 ext-test:
   crns:
     - "1106853946"
