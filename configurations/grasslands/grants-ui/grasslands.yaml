@@ -1,0 +1,332 @@
+engine: V2
+name: Apply for a grasslands grant
+metadata:
+  id: b8954431-a126-49a5-932d-0fd212feb1d4
+  enabledInProd: true
+  referenceNumberPrefix: GLD
+  supportEmail: ruralpayments@defra.gov.uk
+  grantRedirectRules:
+    excludedPaths: ['print-submitted-application']
+  permissions:
+    enforce: true
+    resource: csApplications
+    pageAccess:
+      default: amend
+      rules:
+        - paths:
+            - declaration
+          permission: submit
+        - paths:
+            - print-submitted-application
+            - confirmation
+          permission: view
+  detailsPage:
+    confirmationFieldName: businessDetailsUpToDate
+    toleratedFailurePaths:
+      - vat
+      - countyParishHoldings
+    query:
+      name: Business
+      entities:
+        - name: customer
+          variableName: crn
+          variableSource: credentials.crn
+          fields:
+            - path: info
+              fields:
+                - path: name
+                  fields:
+                    - path: first
+                    - path: middle
+                    - path: last
+                - path: email
+                  fields:
+                    - path: address
+                - path: phone
+                  fields:
+                    - path: mobile
+                    - path: landline
+                - path: address
+                  fields:
+                    - path: line1
+                    - path: line2
+                    - path: line3
+                    - path: line4
+                    - path: line5
+                    - path: street
+                    - path: city
+                    - path: postalCode
+                    - path: uprn
+                    - path: county
+                    - path: buildingName
+                    - path: buildingNumberRange
+                    - path: dependentLocality
+                    - path: doubleDependentLocality
+                    - path: flatName
+                    - path: pafOrganisationName
+        - name: business
+          variableName: sbi
+          variableSource: credentials.sbi
+          fields:
+            - path: info
+              fields:
+                - path: reference
+                - path: email
+                  fields:
+                    - path: address
+                - path: phone
+                  fields:
+                    - path: mobile
+                    - path: landline
+                - path: name
+                - path: address
+                  fields:
+                    - path: line1
+                    - path: line2
+                    - path: line3
+                    - path: line4
+                    - path: line5
+                    - path: street
+                    - path: city
+                    - path: postalCode
+                    - path: uprn
+                    - path: county
+                    - path: buildingName
+                    - path: buildingNumberRange
+                    - path: dependentLocality
+                    - path: doubleDependentLocality
+                    - path: flatName
+                    - path: pafOrganisationName
+                - path: vat
+    responseMapping:
+      business: data.business.info
+      customer: data.customer.info
+    displaySections:
+      - title: Business contact details
+        fields:
+          - label: Business name
+            sourcePath: business.name
+          - label: Business address
+            sourcePath: business.address
+            format: address
+          - label: Business phone numbers
+            sourcePath: business.phone
+            format: phoneNumbers
+          - label: Business email address
+            sourcePath: business.email.address
+      - title: Reference numbers
+        fields:
+          - label: Single Business Identifier (SBI)
+            sourceType: credentials
+            sourcePath: sbi
+          - label: VAT registration number
+            sourcePath: business.vat
+      - title: Personal details
+        fields:
+          - label: Full name
+            sourcePath: customer.name
+            format: fullName
+          - label: Customer reference number
+            sourceType: credentials
+            sourcePath: crn
+          - label: Personal address
+            sourcePath: customer.address
+            format: address
+          - label: Personal phone numbers
+            sourcePath: customer.phone
+            format: phoneNumbers
+          - label: Personal email address
+            sourcePath: customer.email.address
+  confirmationContent:
+    panelTitle: 'Application complete'
+    panelText: 'Your application number'
+    html: |
+      <p class="govuk-body">It may be useful to write down your application number, so you have it ready if you need to contact us.</p>
+      <h2 class="govuk-heading-m">What happens next</h2>
+      <p class="govuk-body">The Rural Payments Agency (RPA) will email you when your agreement offer is ready to view.</p>
+      <p class="govuk-body"><a class="govuk-link" href="/{{SLUG}}/print-submitted-application" target="_blank">View / Print submitted application (opens in new tab)</a></p>
+  printPage:
+    showApplicantDetails: true
+    includeApplicationInTitle: false
+  incorrectDetailsContent:
+    heading: Update your details
+    paragraphs:
+      - Make sure your details are correct before you apply for a grasslands grant.
+      - textBefore: 'To update your details follow our '
+        link:
+          text: Register and update your details with the Rural Payments Agency guidance
+          href: https://www.gov.uk/guidance/update-personal-and-business-details-in-the-rural-payments-service#what-personal-details-you-can-update
+        textAfter: '.'
+    showRpaSupport: false
+  options:
+    submitButtonText: Continue
+
+pages:
+  - title: Confirm your details
+    path: /check-details
+    controller: CheckDetailsController
+    id: f0e1ed57-fd77-42f3-b7fd-662854210777
+
+  - title: Confirm you will be eligible
+    id: 653df07b-4208-4505-b5c7-7a8c65a3f01a
+    path: /confirm-you-will-be-eligible
+    components:
+      - name: confirmEligibilityGuidance
+        id: 970beabd-24f5-4c28-913d-e2f8305f7bd4
+        type: Html
+        content: |
+          <p class="govuk-body">You confirm you will:</p>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>have management control of the land you enter into your agreement for the duration of your agreement</li>
+            <li>make sure your land remains eligible for the duration of your agreement</li>
+            <li>get an SFI Historic Environment Farm Environment Record (SFI HEFER) from Historic England if you apply for actions on land with historic or archaeological features - you must have this in place before the RPA can offer you an agreement</li>
+            <li>get site of special scientific interest (SSSI) consent from Natural England if you select to do actions on SSSI land - you must not start doing these actions until you have your SSSI consent</li>
+            <li>check if you can do your selected actions on your land if you have land with a conditional exemption from inheritance tax or maintenance fund</li>
+            <li>not apply for actions that include activities you are legally required to carry out or are already funded by other sources</li>
+          </ul>
+      - name: confirmEligibility
+        id: b00eb6d7-8e45-45d1-94d1-7fa085a179f5
+        type: YesNoField
+        title: Do you confirm you will be eligible?
+        options:
+          required: true
+          classes: govuk-radios
+
+  - title: You are not eligible for this service
+    id: 083a5236-182d-4ddb-b90e-2c3567d17cd5
+    path: /not-eligible
+    controller: TerminalPageController
+    components:
+      - name: notEligibleInfo
+        id: 29536870-41de-47d0-ab24-bf3365c6bba5
+        title: Html
+        type: Html
+        content: |
+          <p class="govuk-body">Based on your response, you do not meet the eligibility criteria to use the Grasslands service.</p>
+          <p class="govuk-body">The rules require all applicants to confirm that they meet specific conditions.</p>
+          <p class="govuk-body">Next Steps</p>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>Check your answers: and go back 1</li>
+            <li>View full guidance: to understand the criteria.</li>
+            <li>Contact us: if you believe you should be eligible.</li>
+          </ul>
+    condition: d7dab0a1-c91e-4212-b1e0-d86bc9d5151d
+
+  - title: Confirm your land details are up to date
+    id: 08ff02d3-c77e-45ff-8cee-5e2e5ccea7a4
+    path: /confirm-land-details-up-to-date
+    components:
+      - name: confirmLandDetailsUpToDateGuidance
+        id: 91855c8b-b774-4a53-84ec-f02486a933b4
+        type: Html
+        content: |
+          <p class="govuk-body">You confirm you have checked your digital maps are up to date and show:</p>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>all the land parcels you want to include in your application</li>
+            <li>the correct total area (in hectares) for each land parcel</li>
+            <li>the correct land covers for each land parcel, for example, arable land, permanent grassland, permanent crops or relevant non-agricultural land cover</li>
+          </ul>
+          <p class="govuk-body">If your land details are not up to date:</p>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>you may not be able to apply for the actions you select</li>
+            <li>the total area of land available to enter into an action may not be accurate</li>
+          </ul>
+      - name: confirmLandDetailsUpToDate
+        id: 055fe807-11da-48a3-9c49-e1b64f7938e2
+        type: YesNoField
+        title: Do you confirm your land details are up to date?
+        options:
+          required: true
+          classes: govuk-radios
+
+  - title: Update your land details
+    id: eac881f6-c9e6-4f49-b320-9bd86a240c0b
+    path: /update-your-land-details
+    controller: TerminalPageController
+    components:
+      - name: updateYourLandDetailsGuidance
+        id: e6c9786b-1e28-4bfc-8c09-e1c6e8b4ac1a
+        title: Html
+        type: Html
+        content: |
+          <p class="govuk-body"><strong>Make sure your land details are correct before you apply for the Grasslands scheme.</strong></p>
+          <p class="govuk-body">To update your details follow our
+          <a class="govuk-link" href="https://www.gov.uk/guidance/update-personal-and-business-details-in-the-rural-payments-service#what-personal-details-you-can-update" rel="noreferrer noopener" target="_blank">Register and update your details with the Rural Payments Agency guidance (opens in new tab)</a>.</p>
+    condition: d98a42b2-5cc4-4ad7-9568-869461fe7739
+
+  - title: Select a land parcel
+    id: a1b2c3d4-0001-0001-0001-000000000003
+    path: /select-land-parcel
+    controller: MapSelectPageController
+    components:
+      - name: selectedParcelsDisplay
+        id: a1b2c3d4-0001-0001-0001-000000000010
+        type: HiddenField
+        title: Land parcel
+        shortDescription: Land parcel
+        options:
+          required: false
+
+  - title: Select actions for land parcel
+    id: a1b2c3d4-0001-0001-0001-000000000004
+    path: /select-actions-for-land-parcel
+    controller: SelectLandActionsPageController
+
+  - title: Check your answers
+    id: 7a872360-6b89-4013-a9fa-dbedca9d3a4d
+    path: /summary
+    controller: CheckResponsesPageController
+
+  - title: Potential funding
+    id: ef0a88ab-2212-46e7-9f59-7ab21e71373d
+    path: /potential-funding
+    components:
+      - name: placeholderForPaymentDetails
+        id: 1f4869ff-fd7a-4e71-9be0-459f6fc518fc
+        type: Html
+        content: |
+          <p class="govuk-body">We calculate the amount to be paid based on the total area of eligible grassland and specific features in your application.</p>
+          <p class="govuk-body">The payment is a flat rate per eligible hectare, with potential top-up payments for specific high-nature-value features or sustainable management practices.</p>
+          <p class="govuk-body">For full details read our <a href="#" rel="noreferrer noopener" target="_blank">Applicant's guide: Grasslands scheme 2026 guidance (opens in new tab)</a>.</p>
+          <p class="govuk-body">Based on the information provided, you may be eligible for a grant of €2,041.49.</p>
+          <p class="govuk-inset-text">There's no guarantee you'll receive a grant</p>
+          <p class="govuk-body">Please note that these figures are correct as at the Agreement Start Date and may vary as a result of the processes set out in the <a href="#" rel="noreferrer noopener" target="_blank">Capital grants agreements: Terms and conditions 2026 (opens in new tab)</a>. Examples of where the figures may change include amendments to the size of a parcel and adjustments to a payment rate to eliminate duplicate environmental payments.</p>
+
+  - title: Submit your application
+    id: 18514e4f-8615-4585-81ae-6e74e5d45def
+    path: /declaration
+    view: grasslands-declaration-page.html
+    controller: DeclarationPageController
+
+  - title: Confirmation
+    path: /confirmation
+    controller: ConfirmationPageController
+    id: f8b1e6c1-1d5c-4be9-9b4d-0ddef7e28a16
+
+  - title: PrintSubmittedApplication
+    path: /print-submitted-application
+    controller: PrintSubmittedApplicationController
+    id: 074a99e3-4542-4bea-aaa4-e9b770dda806
+
+sections: []
+lists: []
+conditions:
+  - id: d7dab0a1-c91e-4212-b1e0-d86bc9d5151d
+    displayName: confirmEligibilityNo
+    items:
+      - id: 8cde5f16-16c2-4be4-9a0d-54b20f3b288b
+        componentId: b00eb6d7-8e45-45d1-94d1-7fa085a179f5
+        operator: is
+        type: BooleanValue
+        value: false
+  - id: d98a42b2-5cc4-4ad7-9568-869461fe7739
+    displayName: continueNoTwo
+    items:
+      - id: 835eddbd-3ab6-4732-86e1-2193e965dd9b
+        componentId: 055fe807-11da-48a3-9c49-e1b64f7938e2
+        operator: is
+        type: BooleanValue
+        value: false
+
+startPage: /check-details
+schema: 2
