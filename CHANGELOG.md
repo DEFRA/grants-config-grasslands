@@ -1,5 +1,11 @@
 # grants-config-grasslands
 
+## 0.4.0
+
+### Minor Changes
+
+- de0e360: Allow all for dev, test, perf-test
+
 ## 0.3.0
 
 ### Minor Changes
