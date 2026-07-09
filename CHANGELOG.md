@@ -1,5 +1,11 @@
 # grants-config-grasslands
 
+## 0.5.0
+
+### Minor Changes
+
+- 093210d: Add grant-level land actions and single parcel submission config
+
 ## 0.4.0
 
 ### Minor Changes
