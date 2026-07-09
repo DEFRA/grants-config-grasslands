@@ -3,6 +3,9 @@ name: Apply for a grasslands grant
 metadata:
   id: b8954431-a126-49a5-932d-0fd212feb1d4
   enabledInProd: true
+  enabledLandActions:
+    - 'CLIG3'
+  singleParcelSubmission: true
   referenceNumberPrefix: GLD
   supportEmail: ruralpayments@defra.gov.uk
   grantRedirectRules:
