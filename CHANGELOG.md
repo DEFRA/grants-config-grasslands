@@ -1,5 +1,11 @@
 # grants-config-grasslands
 
+## 0.6.0
+
+### Minor Changes
+
+- a502c37: Add GAS grant definition and CW workflow definition for grasslands as source of truth
+
 ## 0.5.0
 
 ### Minor Changes
