@@ -1,5 +1,11 @@
 # grants-config-grasslands
 
+## 0.7.0
+
+### Minor Changes
+
+- 3710e47: Payment page setup using actual land grants api
+
 ## 0.6.0
 
 ### Minor Changes
