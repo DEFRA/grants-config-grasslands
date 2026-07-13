@@ -283,17 +283,18 @@ pages:
   - title: Potential funding
     id: ef0a88ab-2212-46e7-9f59-7ab21e71373d
     path: /potential-funding
-    components:
-      - name: placeholderForPaymentDetails
-        id: 1f4869ff-fd7a-4e71-9be0-459f6fc518fc
-        type: Html
-        content: |
-          <p class="govuk-body">We calculate the amount to be paid based on the total area of eligible grassland and specific features in your application.</p>
-          <p class="govuk-body">The payment is a flat rate per eligible hectare, with potential top-up payments for specific high-nature-value features or sustainable management practices.</p>
-          <p class="govuk-body">For full details read our <a href="#" rel="noreferrer noopener" target="_blank">Applicant's guide: Grasslands scheme 2026 guidance (opens in new tab)</a>.</p>
-          <p class="govuk-body">Based on the information provided, you may be eligible for a grant of €2,041.49.</p>
-          <p class="govuk-inset-text">There's no guarantee you'll receive a grant</p>
-          <p class="govuk-body">Please note that these figures are correct as at the Agreement Start Date and may vary as a result of the processes set out in the <a href="#" rel="noreferrer noopener" target="_blank">Capital grants agreements: Terms and conditions 2026 (opens in new tab)</a>. Examples of where the figures may change include amendments to the size of a parcel and adjustments to a payment rate to eliminate duplicate environmental payments.</p>
+    controller: PaymentPageController
+    config:
+      paymentStrategy: multiAction
+      redirects:
+        next: /you-must-have-consent
+      paymentExplanation: |
+        <p class="govuk-body">We calculate the amount to be paid based on the total area of eligible grassland and specific features in your application.</p>
+        <p class="govuk-body">The payment is a flat rate per eligible hectgare, with potential top-up payments for specific high-nature-value features or sustainable management practices.</p>
+        <p class="govuk-body">For full details read our <a href="#" class="govuk-link" target="_blank">Applicant’s guide: Grasslands scheme 2026 guidance (opens in new tab)</a>.</p>
+        <p class="govuk-body">Based on the information provided, you may be eligible for a grant of {{ totalPayment }}.</p>
+        <p class="govuk-inset-text">There’s no guarantee you’ll receive a grant</p>
+        <p class="govuk-body">Please note that these figures are correct as at the Agreement Start Date and may vary as a result of the processes set out in the <a href="https://www.gov.uk/government/publications/capital-grants-agreements-terms-and-conditions-2026" class="govuk-link" target="_blank">Capital grants agreements: Terms and conditions 2026 (opens in new tab)</a>. Examples of where the figures may change include amendments to the size of a parcel and adjustments to a payment rate to eliminate duplicate environmental payments.</p>
 
   - title: You must have consent
     path: /you-must-have-consent
