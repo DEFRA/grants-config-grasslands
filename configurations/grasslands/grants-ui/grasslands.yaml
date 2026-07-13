@@ -284,7 +284,7 @@ pages:
     config:
       paymentStrategy: multiAction
       redirects:
-        next: /declaration
+        next: /you-must-have-consent
       paymentExplanation: |
         <p class="govuk-body">We calculate the amount to be paid based on the total area of eligible grassland and specific features in your application.</p>
         <p class="govuk-body">The payment is a flat rate per eligible hectgare, with potential top-up payments for specific high-nature-value features or sustainable management practices.</p>
