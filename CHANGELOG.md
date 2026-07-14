@@ -1,5 +1,11 @@
 # grants-config-grasslands
 
+## 0.7.2
+
+### Patch Changes
+
+- dac0586: Add the Grassland Private Beta scheme name to the caseworking workflow configuration.
+
 ## 0.7.1
 
 ### Patch Changes
