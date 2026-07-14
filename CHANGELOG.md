@@ -1,5 +1,11 @@
 # grants-config-grasslands
 
+## 0.7.1
+
+### Patch Changes
+
+- a0ece77: fixed a typo on payment page
+
 ## 0.7.0
 
 ### Minor Changes
