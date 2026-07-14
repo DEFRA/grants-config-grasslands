@@ -290,7 +290,7 @@ pages:
         next: /you-must-have-consent
       paymentExplanation: |
         <p class="govuk-body">We calculate the amount to be paid based on the total area of eligible grassland and specific features in your application.</p>
-        <p class="govuk-body">The payment is a flat rate per eligible hectgare, with potential top-up payments for specific high-nature-value features or sustainable management practices.</p>
+        <p class="govuk-body">The payment is a flat rate per eligible hectare, with potential top-up payments for specific high-nature-value features or sustainable management practices.</p>
         <p class="govuk-body">For full details read our <a href="#" class="govuk-link" target="_blank">Applicant’s guide: Grasslands scheme 2026 guidance (opens in new tab)</a>.</p>
         <p class="govuk-body">Based on the information provided, you may be eligible for a grant of {{ totalPayment }}.</p>
         <p class="govuk-inset-text">There’s no guarantee you’ll receive a grant</p>
