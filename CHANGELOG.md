@@ -1,5 +1,11 @@
 # grants-config-grasslands
 
+## 0.8.0
+
+### Minor Changes
+
+- 43cb4dc: Added CSAM3 and new controller/view
+
 ## 0.7.2
 
 ### Patch Changes
