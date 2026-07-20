@@ -5,6 +5,7 @@ metadata:
   enabledInProd: true
   enabledLandActions:
     - 'CLIG3'
+    - 'CSAM3'
   singleParcelSubmission: true
   referenceNumberPrefix: GLD
   supportEmail: ruralpayments@defra.gov.uk
@@ -273,7 +274,7 @@ pages:
   - title: Select actions for land parcel
     id: a1b2c3d4-0001-0001-0001-000000000004
     path: /select-actions-for-land-parcel
-    controller: SelectLandActionsPageController
+    controller: SelectActionsPageController
 
   - title: Check your answers
     id: 7a872360-6b89-4013-a9fa-dbedca9d3a4d
