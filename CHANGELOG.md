@@ -1,5 +1,11 @@
 # grants-config-grasslands
 
+## 0.9.0
+
+### Minor Changes
+
+- 1afec16: Remove ext-test allowlist
+
 ## 0.8.0
 
 ### Minor Changes
