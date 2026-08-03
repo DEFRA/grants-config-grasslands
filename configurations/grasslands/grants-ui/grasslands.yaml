@@ -1,5 +1,5 @@
 engine: V2
-name: Apply for a grasslands grant
+name: Apply for a Grasslands agreement
 metadata:
   id: b8954431-a126-49a5-932d-0fd212feb1d4
   enabledInProd: true
@@ -10,6 +10,12 @@ metadata:
   referenceNumberPrefix: GLD
   supportEmail: ruralpayments@defra.gov.uk
   grantRedirectRules:
+    preSubmission:
+      - toPath: /summary
+        requiresAnyItemWithNonEmptyKey:
+          collection: landParcels
+          key: actionsObj
+        incompleteToPath: /select-land-parcel
     excludedPaths: ['print-submitted-application']
   permissions:
     enforce: true
@@ -142,110 +148,113 @@ metadata:
           - label: Personal email address
             sourcePath: customer.email.address
   confirmationContent:
-    panelTitle: 'Application complete'
+    panelTitle: 'Application submitted'
     panelText: 'Your application number'
     html: |
-      <p class="govuk-body">It may be useful to write down your application number, so you have it ready if you need to contact us.</p>
       <h2 class="govuk-heading-m">What happens next</h2>
-      <p class="govuk-body">The Rural Payments Agency (RPA) will email you when your agreement offer is ready to view.</p>
+      <p class="govuk-body">Thank you for submitting your SFI application.</p>
+      <p class="govuk-body">We will notify you when your SFI agreement offer is available for you to check in the Rural Payments service.</p>
       <p class="govuk-body"><a class="govuk-link" href="/{{SLUG}}/print-submitted-application" target="_blank">View / Print submitted application (opens in new tab)</a></p>
+    button:
+      text: Back to Farm and Land Service
+      href: https://fcp-sfd-frontend.cdpEnv.cdp-int.defra.cloud/
   printPage:
     showApplicantDetails: true
     includeApplicationInTitle: false
   incorrectDetailsContent:
-    heading: Update your details
+    heading: Update your business details
     paragraphs:
-      - Make sure your details are correct before you apply for a grasslands grant.
+      - You need to update your business details before you can continue with this application.
       - textBefore: 'To update your details follow our '
         link:
           text: Register and update your details with the Rural Payments Agency guidance
           href: https://www.gov.uk/guidance/update-personal-and-business-details-in-the-rural-payments-service#what-personal-details-you-can-update
         textAfter: '.'
     showRpaSupport: false
+  tasklist:
+    showCompletionStatus: false
+    statuses:
+      cannotStart:
+        text: 'Cannot start yet'
+        classes: 'govuk-tag--grey'
+      notStarted:
+        text: 'Not started'
+        classes: 'govuk-tag--blue'
+      completed:
+        text: 'Completed'
+        classes: 'govuk-tag--green'
   options:
-    submitButtonText: Continue
+    submitButtonText: Save and continue
+
+# Tasks for the task list
+sections:
+  - name: check
+    title: Check before you start
+    id: bb8b763d-38d2-4a70-8e02-80c53c3d95c9
+  - name: select
+    title: Select land and actions
+    id: 28ad9fe7-5b31-4bc2-8a17-57593879ed39
+  - name: submit
+    title: Review and submit your application
+    id: ade97a6e-1852-4f15-9624-1613c6dcc69b
 
 pages:
-  - title: Confirm your details
-    path: /check-details
-    controller: CheckDetailsController
+  # Task list page
+  - title: Apply for a Grasslands agreement
+    id: 024e726c-8712-4d8b-bed8-88a5669bab83
+    path: /tasks
+    controller: TaskListPageController
+    config:
+      width: full
+
+  # Check before you start ---------------------------------------------------------------------------------------------
+  - title: Check your details
     id: f0e1ed57-fd77-42f3-b7fd-662854210777
+    path: /check-details
+    section: bb8b763d-38d2-4a70-8e02-80c53c3d95c9
+    controller: CheckDetailsController
+    config:
+      width: full
 
-  - title: Confirm you will be eligible
-    id: 653df07b-4208-4505-b5c7-7a8c65a3f01a
-    path: /confirm-you-will-be-eligible
-    components:
-      - name: confirmEligibilityGuidance
-        id: 970beabd-24f5-4c28-913d-e2f8305f7bd4
-        type: Html
-        content: |
-          <p class="govuk-body">You confirm you will:</p>
-          <ul class="govuk-list govuk-list--bullet">
-            <li>have management control of the land you enter into your agreement for the duration of your agreement</li>
-            <li>make sure your land remains eligible for the duration of your agreement</li>
-            <li>get an SFI Historic Environment Farm Environment Record (SFI HEFER) from Historic England if you apply for actions on land with historic or archaeological features - you must have this in place before the RPA can offer you an agreement</li>
-            <li>get site of special scientific interest (SSSI) consent from Natural England if you select to do actions on SSSI land - you must not start doing these actions until you have your SSSI consent</li>
-            <li>check if you can do your selected actions on your land if you have land with a conditional exemption from inheritance tax or maintenance fund</li>
-            <li>not apply for actions that include activities you are legally required to carry out or are already funded by other sources</li>
-          </ul>
-      - name: confirmEligibility
-        id: b00eb6d7-8e45-45d1-94d1-7fa085a179f5
-        type: YesNoField
-        title: Do you confirm you will be eligible?
-        options:
-          required: true
-          classes: govuk-radios
-
-  - title: You are not eligible for this service
-    id: 083a5236-182d-4ddb-b90e-2c3567d17cd5
-    path: /not-eligible
-    controller: TerminalPageController
-    components:
-      - name: notEligibleInfo
-        id: 29536870-41de-47d0-ab24-bf3365c6bba5
-        title: Html
-        type: Html
-        content: |
-          <p class="govuk-body">Based on your response, you do not meet the eligibility criteria to use the Grasslands service.</p>
-          <p class="govuk-body">The rules require all applicants to confirm that they meet specific conditions.</p>
-          <p class="govuk-body">Next Steps</p>
-          <ul class="govuk-list govuk-list--bullet">
-            <li>Check your answers: and go back 1</li>
-            <li>View full guidance: to understand the criteria.</li>
-            <li>Contact us: if you believe you should be eligible.</li>
-          </ul>
-    condition: d7dab0a1-c91e-4212-b1e0-d86bc9d5151d
-
-  - title: Confirm your land details are up to date
+  - title: Check your land details
     id: 08ff02d3-c77e-45ff-8cee-5e2e5ccea7a4
-    path: /confirm-land-details-up-to-date
+    path: /check-your-land-details
+    section: bb8b763d-38d2-4a70-8e02-80c53c3d95c9
+    controller: TaskPageController
     components:
-      - name: confirmLandDetailsUpToDateGuidance
+      - name: checkYourLandDetailsGuidance
         id: 91855c8b-b774-4a53-84ec-f02486a933b4
         type: Html
         content: |
-          <p class="govuk-body">You confirm you have checked your digital maps are up to date and show:</p>
+          <p class="govuk-body">
+            Before you continue with this application, check the land details on your digital maps are up to date. If they are not, this may prevent you from applying for the SFI actions you select. Read the guidance on <a class="govuk-link" href="https://www.gov.uk/guidance/digital-maps-in-the-rural-payments-service-check-and-change-mapping-updates" target="_blank" rel="noopener noreferrer">how to check your digital maps</a>.
+          </p>
+
+          <p class="govuk-body">Check that your digital maps show:</p>
           <ul class="govuk-list govuk-list--bullet">
-            <li>all the land parcels you want to include in your application</li>
-            <li>the correct total area (in hectares) for each land parcel</li>
-            <li>the correct land covers for each land parcel, for example, arable land, permanent grassland, permanent crops or relevant non-agricultural land cover</li>
+          <li>all the land parcels you want to include in this application</li>
+          <li>the correct total area (in hectares) for each land parcel</li>
+          <li>the correct land covers for each land parcel, for example, arable land, permanent grassland, permanent crops or relevant non-agricultural land cover</li>
           </ul>
-          <p class="govuk-body">If your land details are not up to date:</p>
-          <ul class="govuk-list govuk-list--bullet">
-            <li>you may not be able to apply for the actions you select</li>
-            <li>the total area of land available to enter into an action may not be accurate</li>
-          </ul>
+
+          <p class="govuk-body">
+          <a class="govuk-link" href="https://www.gov.uk/guidance/digital-maps-in-the-rural-payments-service-check-and-change-mapping-updates" target="_blank" rel="noopener noreferrer">Check your digital maps</a>
+          </p>
       - name: confirmLandDetailsUpToDate
         id: 055fe807-11da-48a3-9c49-e1b64f7938e2
         type: YesNoField
-        title: Do you confirm your land details are up to date?
+        title: Do your digital maps show the correct land details?
+        shortDescription: Confirm your land details are up to date
         options:
           required: true
           classes: govuk-radios
+          customValidationMessages:
+            any.required: Select if your digital maps show the correct land details
 
   - title: Update your land details
     id: eac881f6-c9e6-4f49-b320-9bd86a240c0b
     path: /update-your-land-details
+    section: bb8b763d-38d2-4a70-8e02-80c53c3d95c9
     controller: TerminalPageController
     components:
       - name: updateYourLandDetailsGuidance
@@ -253,76 +262,118 @@ pages:
         title: Html
         type: Html
         content: |
-          <p class="govuk-body"><strong>Make sure your land details are correct before you apply for the Grasslands scheme.</strong></p>
-          <p class="govuk-body">To update your details follow our
-          <a class="govuk-link" href="https://www.gov.uk/guidance/update-personal-and-business-details-in-the-rural-payments-service#what-personal-details-you-can-update" rel="noreferrer noopener" target="_blank">Register and update your details with the Rural Payments Agency guidance (opens in new tab)</a>.</p>
+          <p class="govuk-body">
+            As your digital maps are not up to date, <a class="govuk-link" href="https://www.gov.uk/guidance/request-rural-land-changes" target="_blank" rel="noopener noreferrer">request rural land changes</a> or <a class="govuk-link" href="https://www.gov.uk/government/publications/rural-land-register-map-and-land-cover-form-rle1" target="_blank" rel="noopener noreferrer">submit an RLE1 form</a> to ask us to update them. You need to submit your mapping update request as soon as possible.
+          </p>
     condition: d98a42b2-5cc4-4ad7-9568-869461fe7739
 
-  - title: Select a land parcel
+  - title: Management control of land
+    id: 653df07b-4208-4505-b5c7-7a8c65a3f01a
+    path: /management-control-of-land
+    section: bb8b763d-38d2-4a70-8e02-80c53c3d95c9
+    controller: TaskPageController
+    components:
+      - name: managementControlGuidance
+        id: 970beabd-24f5-4c28-913d-e2f8305f7bd4
+        type: Html
+        content: |
+          <p class="govuk-body">
+          You must have management control of the land in your SFI agreement for the duration of your selected SFI actions.
+          </p>
+
+          <p class="govuk-body">
+          If you occupy land under a short-term tenancy, you must only enter this land into your SFI agreement if you expect to have management control of it for the entire duration of your selected SFI actions.
+          </p>
+
+          <p class="govuk-body">
+          Read the SFI scheme information on <a class="govuk-link" href="#">management control of land</a>.
+          </p>
+      - name: managementControl
+        id: b00eb6d7-8e45-45d1-94d1-7fa085a179f5
+        type: YesNoField
+        title: Select if you will have the required management control of the land in this application
+        shortDescription: Confirm management control of the land
+        options:
+          required: true
+          classes: govuk-radios
+          customValidationMessages:
+            any.required: Select if you will have the required management control of the land in this application
+
+  - title: You are not eligible to apply
+    id: 083a5236-182d-4ddb-b90e-2c3567d17cd5
+    path: /not-eligible
+    section: bb8b763d-38d2-4a70-8e02-80c53c3d95c9
+    controller: TerminalPageController
+    components:
+      - name: notEligibleInfo
+        id: 29536870-41de-47d0-ab24-bf3365c6bba5
+        title: Html
+        type: Html
+        content: |
+          <p class="govuk-body">As your last answer was 'no', you are not eligible to apply for an SFI agreement. Select 'back' to change your answer.</p>
+    condition: d7dab0a1-c91e-4212-b1e0-d86bc9d5151d
+
+  # Select land and actions --------------------------------------------------------------------------------------------
+  - title: Select land for your actions
     id: a1b2c3d4-0001-0001-0001-000000000003
     path: /select-land-parcel
+    section: 28ad9fe7-5b31-4bc2-8a17-57593879ed39
     controller: MapSelectPageController
     components:
       - name: selectedParcelsDisplay
         id: a1b2c3d4-0001-0001-0001-000000000010
         type: HiddenField
         title: Land parcel
-        shortDescription: Land parcel
+        shortDescription: Select the land and actions you want to apply for
         options:
           required: false
 
   - title: Select actions for land parcel
     id: a1b2c3d4-0001-0001-0001-000000000004
     path: /select-actions-for-land-parcel
+    section: 28ad9fe7-5b31-4bc2-8a17-57593879ed39
     controller: SelectActionsPageController
-
-  - title: Check your answers
-    id: 7a872360-6b89-4013-a9fa-dbedca9d3a4d
-    path: /summary
-    controller: CheckResponsesPageController
-
-  - title: Potential funding
-    id: ef0a88ab-2212-46e7-9f59-7ab21e71373d
-    path: /potential-funding
-    controller: PaymentPageController
-    config:
-      paymentStrategy: multiAction
-      redirects:
-        next: /you-must-have-consent
-      paymentExplanation: |
-        <p class="govuk-body">We calculate the amount to be paid based on the total area of eligible grassland and specific features in your application.</p>
-        <p class="govuk-body">The payment is a flat rate per eligible hectare, with potential top-up payments for specific high-nature-value features or sustainable management practices.</p>
-        <p class="govuk-body">For full details read our <a href="#" class="govuk-link" target="_blank">Applicant’s guide: Grasslands scheme 2026 guidance (opens in new tab)</a>.</p>
-        <p class="govuk-body">Based on the information provided, you may be eligible for a grant of {{ totalPayment }}.</p>
-        <p class="govuk-inset-text">There’s no guarantee you’ll receive a grant</p>
-        <p class="govuk-body">Please note that these figures are correct as at the Agreement Start Date and may vary as a result of the processes set out in the <a href="https://www.gov.uk/government/publications/capital-grants-agreements-terms-and-conditions-2026" class="govuk-link" target="_blank">Capital grants agreements: Terms and conditions 2026 (opens in new tab)</a>. Examples of where the figures may change include amendments to the size of a parcel and adjustments to a payment rate to eliminate duplicate environmental payments.</p>
 
   - title: You must have consent
     path: /you-must-have-consent
+    section: 28ad9fe7-5b31-4bc2-8a17-57593879ed39
     controller: ConsentPageController
     id: d11421c1-193c-4c22-ba46-54a6696ff6ce
+
+  # Review and submit your application ---------------------------------------------------------------------------------
+  - title: Check your answers
+    id: 7a872360-6b89-4013-a9fa-dbedca9d3a4d
+    path: /summary
+    section: ade97a6e-1852-4f15-9624-1613c6dcc69b
+    controller: CheckResponsesPageController
+    config:
+      width: full
 
   - title: Submit your application
     id: 18514e4f-8615-4585-81ae-6e74e5d45def
     path: /declaration
+    section: ade97a6e-1852-4f15-9624-1613c6dcc69b
     view: grasslands-declaration-page.html
     controller: DeclarationPageController
 
+  # Post submission pages ----------------------------------------------------------------------------------------------
   - title: Confirmation
+    id: f8b1e6c1-1d5c-4be9-9b4d-0ddef7e28a16
     path: /confirmation
     controller: ConfirmationPageController
-    id: f8b1e6c1-1d5c-4be9-9b4d-0ddef7e28a16
 
   - title: PrintSubmittedApplication
+    id: 074a99e3-4542-4bea-aaa4-e9b770dda806
     path: /print-submitted-application
     controller: PrintSubmittedApplicationController
-    id: 074a99e3-4542-4bea-aaa4-e9b770dda806
+    config:
+      width: full
 
-sections: []
 lists: []
+
 conditions:
   - id: d7dab0a1-c91e-4212-b1e0-d86bc9d5151d
-    displayName: confirmEligibilityNo
+    displayName: managementControlNo
     items:
       - id: 8cde5f16-16c2-4be4-9a0d-54b20f3b288b
         componentId: b00eb6d7-8e45-45d1-94d1-7fa085a179f5
@@ -330,7 +381,7 @@ conditions:
         type: BooleanValue
         value: false
   - id: d98a42b2-5cc4-4ad7-9568-869461fe7739
-    displayName: continueNoTwo
+    displayName: checkLandDetailsNo
     items:
       - id: 835eddbd-3ab6-4732-86e1-2193e965dd9b
         componentId: 055fe807-11da-48a3-9c49-e1b64f7938e2
