@@ -348,6 +348,11 @@ pages:
     controller: CheckResponsesPageController
     config:
       width: full
+      additionalSections:
+        - title: Payment summary
+          items:
+            - title: Annual payment for all parcels
+              stateValue: totalPayment
 
   - title: Submit your application
     id: 18514e4f-8615-4585-81ae-6e74e5d45def
