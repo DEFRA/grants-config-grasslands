@@ -1,5 +1,11 @@
 # grants-config-grasslands
 
+## 0.10.0
+
+### Minor Changes
+
+- 9b8cde1: Update form definition and GAS schema
+
 ## 0.9.0
 
 ### Minor Changes
