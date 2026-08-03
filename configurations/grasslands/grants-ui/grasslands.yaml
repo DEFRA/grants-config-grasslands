@@ -10,6 +10,12 @@ metadata:
   referenceNumberPrefix: GLD
   supportEmail: ruralpayments@defra.gov.uk
   grantRedirectRules:
+    preSubmission:
+      - toPath: /summary
+        requiresAnyItemWithNonEmptyKey:
+          collection: landParcels
+          key: actionsObj
+        incompleteToPath: /select-land-parcel
     excludedPaths: ['print-submitted-application']
   permissions:
     enforce: true
