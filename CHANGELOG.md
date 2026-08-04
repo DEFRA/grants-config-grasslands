@@ -1,5 +1,11 @@
 # grants-config-grasslands
 
+## 0.11.0
+
+### Minor Changes
+
+- be53fdb: Update check your answers page with additional sections
+
 ## 0.10.1
 
 ### Patch Changes
