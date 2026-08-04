@@ -1,5 +1,11 @@
 # grants-config-grasslands
 
+## 0.12.0
+
+### Minor Changes
+
+- acb21ca: Adding SCR2 to grasslands
+
 ## 0.11.0
 
 ### Minor Changes
