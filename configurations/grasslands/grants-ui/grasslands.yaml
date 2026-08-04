@@ -6,6 +6,7 @@ metadata:
   enabledLandActions:
     - 'CLIG3'
     - 'CSAM3'
+    - 'SCR2'
   singleParcelSubmission: true
   referenceNumberPrefix: GLD
   supportEmail: ruralpayments@defra.gov.uk
