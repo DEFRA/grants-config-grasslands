@@ -1,5 +1,11 @@
 # grants-config-grasslands
 
+## 0.13.0
+
+### Minor Changes
+
+- 7da0216: Move the declaration page copy into the page's `config:` block and drop the `view:` override, so the page renders from the unified grants-ui declaration template. The page heading now comes from the page `title` rather than a duplicate `config.heading`. Presentation only — the heading, button label, body copy and support panel are unchanged, and the page still posts no hidden fields.
+
 ## 0.12.0
 
 ### Minor Changes
