@@ -1,5 +1,11 @@
 # grants-config-grasslands
 
+## 0.14.0
+
+### Minor Changes
+
+- 8c043bc: Move confirmation config to page-level
+
 ## 0.13.0
 
 ### Minor Changes
