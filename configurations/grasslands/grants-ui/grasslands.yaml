@@ -148,17 +148,6 @@ metadata:
             format: phoneNumbers
           - label: Personal email address
             sourcePath: customer.email.address
-  confirmationContent:
-    panelTitle: 'Application submitted'
-    panelText: 'Your application number'
-    html: |
-      <h2 class="govuk-heading-m">What happens next</h2>
-      <p class="govuk-body">Thank you for submitting your SFI application.</p>
-      <p class="govuk-body">We will notify you when your SFI agreement offer is available for you to check in the Rural Payments service.</p>
-      <p class="govuk-body"><a class="govuk-link" href="/{{SLUG}}/print-submitted-application" target="_blank">View / Print submitted application (opens in new tab)</a></p>
-    button:
-      text: Back to Farm and Land Service
-      href: https://fcp-sfd-frontend.cdpEnv.cdp-int.defra.cloud/
   printPage:
     showApplicantDetails: true
     includeApplicationInTitle: false
@@ -382,6 +371,19 @@ pages:
     id: f8b1e6c1-1d5c-4be9-9b4d-0ddef7e28a16
     path: /confirmation
     controller: ConfirmationPageController
+    config:
+      panelTitle: 'Application submitted'
+      panelText: 'Your application number'
+    components:
+      - name: confirmationContent
+        id: 15e1efbe-5d88-4fa2-8b0e-eb4ece234c59
+        type: Html
+        content: |
+          <h2 class="govuk-heading-m">What happens next</h2>
+          <p class="govuk-body">Thank you for submitting your SFI application.</p>
+          <p class="govuk-body">We will notify you when your SFI agreement offer is available for you to check in the Rural Payments service.</p>
+          <p class="govuk-body"><a class="govuk-link" href="/{{SLUG}}/print-submitted-application" target="_blank">View / Print submitted application (opens in new tab)</a></p>
+          <p class="govuk-body"><a href="https://fcp-sfd-frontend.{{cdpEnvironment}}.cdp-int.defra.cloud/" class="govuk-button">Back to Farm and Land Service</a></p>
 
   - title: PrintSubmittedApplication
     id: 074a99e3-4542-4bea-aaa4-e9b770dda806
