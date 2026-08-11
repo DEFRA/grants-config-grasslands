@@ -2,6 +2,7 @@ engine: V2
 name: Apply for a Grasslands agreement
 metadata:
   id: b8954431-a126-49a5-932d-0fd212feb1d4
+  surveyLabel: Grasslands
   enabledInProd: true
   enabledLandActions:
     - 'CLIG3'
