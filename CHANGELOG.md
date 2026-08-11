@@ -1,5 +1,11 @@
 # grants-config-grasslands
 
+## 0.15.0
+
+### Minor Changes
+
+- 2041661: Survey config
+
 ## 0.14.0
 
 ### Minor Changes
