@@ -65,9 +65,7 @@
     }
   ],
   "requiredRoles": {
-    "allOf": [
-      "ROLE_SFI_REFORM"
-    ],
+    "allOf": ["ROLE_SFI_REFORM"],
     "anyOf": []
   },
   "definitions": {},
