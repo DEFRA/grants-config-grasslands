@@ -1,5 +1,11 @@
 # grants-config-grasslands
 
+## 0.16.0
+
+### Minor Changes
+
+- a0bbf92: adding latest gas and cw config
+
 ## 0.15.0
 
 ### Minor Changes
