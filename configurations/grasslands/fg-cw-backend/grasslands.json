@@ -1,14 +1,6 @@
 {
   "code": "grasslands",
-  "schemeName": "Grassland Private Beta",
-  "requiredRoles": {
-    "allOf": ["ROLE_SFI_REFORM"],
-    "anyOf": []
-  },
-  "templates": {},
-  "definitions": {},
-  "endpoints": [],
-  "externalActions": [],
+  "version": "0.0.0",
   "pages": {
     "cases": {
       "details": {
@@ -20,7 +12,7 @@
           "summary": {
             "scheme": {
               "label": "Scheme",
-              "text": "$.schemeName",
+              "text": "$.payload.answers.scheme",
               "type": "string"
             },
             "applicationId": {
@@ -53,22 +45,33 @@
           "code": "STAGE_REVIEW_APPLICATION",
           "name": "Tasks",
           "description": "Review the application for eligibility",
+          "beforeContent": [],
+          "afterContent": [],
           "statuses": [
             {
+              "closes": false,
               "code": "STATUS_APPLICATION_RECEIVED",
               "name": "Application Received",
               "theme": "NEUTRAL",
               "description": "Application received and pending review",
               "interactive": false,
-              "closes": false,
+              "hideTaskGroups": false,
               "transitions": []
             }
           ],
-          "taskGroups": [],
-          "beforeContent": []
+          "taskGroups": []
         }
       ]
     }
   ],
-  "version": "0.0.0"
+  "requiredRoles": {
+    "allOf": [
+      "ROLE_SFI_REFORM"
+    ],
+    "anyOf": []
+  },
+  "definitions": {},
+  "templates": {},
+  "endpoints": [],
+  "externalActions": []
 }

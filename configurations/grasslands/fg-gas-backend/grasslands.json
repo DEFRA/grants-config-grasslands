@@ -1,8 +1,11 @@
 {
   "code": "grasslands",
+  "version": "0.0.0",
   "metadata": {
     "description": "Grasslands Grant",
-    "startDate": "2026-04-01T00:00:00.000Z"
+    "startDate": {
+      "$date": "2026-04-01T00:00:00Z"
+    }
   },
   "actions": [
     {
@@ -23,11 +26,12 @@
         "required": [
           "referenceNumber",
           "businessDetailsUpToDate",
+          "confirmEligibility",
           "confirmLandDetailsUpToDate",
-          "managementControl",
           "applicant",
           "detailsConfirmedAt",
-          "parcels"
+          "selectedParcelId",
+          "actionCode"
         ],
         "properties": {
           "referenceNumber": {
@@ -36,21 +40,30 @@
           "businessDetailsUpToDate": {
             "type": "boolean"
           },
-          "confirmLandDetailsUpToDate": {
+          "confirmEligibility": {
             "type": "boolean"
           },
-          "managementControl": {
+          "confirmLandDetailsUpToDate": {
             "type": "boolean"
           },
           "applicant": {
             "type": "object",
             "additionalProperties": false,
-            "required": ["business", "customer"],
+            "required": [
+              "business",
+              "customer"
+            ],
             "properties": {
               "business": {
                 "type": "object",
                 "additionalProperties": false,
-                "required": ["name", "reference", "email", "phone", "address"],
+                "required": [
+                  "name",
+                  "reference",
+                  "email",
+                  "phone",
+                  "address"
+                ],
                 "properties": {
                   "name": {
                     "type": "string"
@@ -61,7 +74,9 @@
                   "email": {
                     "type": "object",
                     "additionalProperties": false,
-                    "required": ["address"],
+                    "required": [
+                      "address"
+                    ],
                     "properties": {
                       "address": {
                         "type": "string",
@@ -72,7 +87,9 @@
                   "phone": {
                     "type": "object",
                     "additionalProperties": false,
-                    "required": ["mobile"],
+                    "required": [
+                      "mobile"
+                    ],
                     "properties": {
                       "mobile": {
                         "type": "string"
@@ -82,7 +99,11 @@
                   "address": {
                     "type": "object",
                     "additionalProperties": false,
-                    "required": ["city", "postalCode", "line1"],
+                    "required": [
+                      "city",
+                      "postalCode",
+                      "line1"
+                    ],
                     "properties": {
                       "city": {
                         "type": "string"
@@ -94,13 +115,22 @@
                         "type": "string"
                       },
                       "line2": {
-                        "type": ["string", "null"]
+                        "type": [
+                          "string",
+                          "null"
+                        ]
                       },
                       "line3": {
-                        "type": ["string", "null"]
+                        "type": [
+                          "string",
+                          "null"
+                        ]
                       },
                       "line4": {
-                        "type": ["string", "null"]
+                        "type": [
+                          "string",
+                          "null"
+                        ]
                       }
                     }
                   }
@@ -109,12 +139,18 @@
               "customer": {
                 "type": "object",
                 "additionalProperties": false,
-                "required": ["name"],
+                "required": [
+                  "name"
+                ],
                 "properties": {
                   "name": {
                     "type": "object",
                     "additionalProperties": false,
-                    "required": ["title", "first", "last"],
+                    "required": [
+                      "title",
+                      "first",
+                      "last"
+                    ],
                     "properties": {
                       "title": {
                         "type": "string"
@@ -123,7 +159,10 @@
                         "type": "string"
                       },
                       "middle": {
-                        "type": ["string", "null"]
+                        "type": [
+                          "string",
+                          "null"
+                        ]
                       },
                       "last": {
                         "type": "string"
@@ -138,39 +177,11 @@
             "type": "string",
             "format": "date-time"
           },
-          "parcels": {
-            "type": "array",
-            "minItems": 1,
-            "items": {
-              "type": "object",
-              "additionalProperties": false,
-              "required": ["parcelId", "actions"],
-              "properties": {
-                "parcelId": {
-                  "type": "string"
-                },
-                "actions": {
-                  "type": "array",
-                  "minItems": 1,
-                  "items": {
-                    "type": "object",
-                    "additionalProperties": false,
-                    "required": ["code", "value", "unit"],
-                    "properties": {
-                      "code": {
-                        "type": "string"
-                      },
-                      "value": {
-                        "type": "number"
-                      },
-                      "unit": {
-                        "type": "string"
-                      }
-                    }
-                  }
-                }
-              }
-            }
+          "selectedParcelId": {
+            "type": "string"
+          },
+          "actionCode": {
+            "type": "string"
           }
         }
       },
@@ -208,6 +219,5 @@
       }
     ]
   },
-  "amendablePositions": [],
-  "version": "0.0.0"
+  "amendablePositions": null
 }
