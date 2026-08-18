@@ -1,5 +1,11 @@
 # grants-config-grasslands
 
+## 0.17.0
+
+### Minor Changes
+
+- 40f3b75: reverting gas cw config
+
 ## 0.16.0
 
 ### Minor Changes
