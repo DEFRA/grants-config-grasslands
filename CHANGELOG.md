@@ -1,5 +1,11 @@
 # grants-config-grasslands
 
+## 0.18.0
+
+### Minor Changes
+
+- 4aaf479: Title missing from DAL query
+
 ## 0.17.0
 
 ### Minor Changes
