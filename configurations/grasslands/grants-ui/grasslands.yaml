@@ -48,6 +48,7 @@ metadata:
               fields:
                 - path: name
                   fields:
+                    - path: title
                     - path: first
                     - path: middle
                     - path: last
