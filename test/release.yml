@@ -1,0 +1,13 @@
+releases:
+- name: grasslands
+  version: 0.0.0
+  notes: For journey tests
+  environments:
+    - name: local
+      status: active
+- name: land-grants
+  version: 0.0.0
+  notes: For journey tests
+  environments:
+    - name: local
+      status: active
