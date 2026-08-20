@@ -8,7 +8,7 @@ metadata:
     - 'CLIG3'
     - 'CSAM3'
     - 'SCR2'
-  singleParcelSubmission: true
+  singleParcelSubmission: false
   referenceNumberPrefix: GLD
   supportEmail: ruralpayments@defra.gov.uk
   grantRedirectRules:
@@ -326,6 +326,14 @@ pages:
     section: 28ad9fe7-5b31-4bc2-8a17-57593879ed39
     controller: SelectActionsPageController
 
+  - title: Your land and actions
+    id: 4c6ef03f-b413-4a2b-9736-7f4df3afad33
+    path: /confirm-land-and-actions
+    controller: ConfirmLandAndActionsPageController
+    config:
+      redirects:
+        addAnotherLandParcel: /select-land-parcel
+
   - title: You must have consent
     path: /you-must-have-consent
     section: 28ad9fe7-5b31-4bc2-8a17-57593879ed39
@@ -393,6 +401,20 @@ pages:
     controller: PrintSubmittedApplicationController
     config:
       width: full
+
+  - title: Remove land parcel
+    id: ebb2c2b3-b335-446a-a490-6f0d81dd5aea
+    path: /remove-parcel
+    controller: RemoveActionPageController
+    config:
+      returnPath: /confirm-land-and-actions
+
+  - title: Remove action
+    id: d02245bc-3c05-4b90-8af1-7cef322cbabf
+    path: /remove-action
+    controller: RemoveActionPageController
+    config:
+      returnPath: /confirm-land-and-actions
 
 lists: []
 
