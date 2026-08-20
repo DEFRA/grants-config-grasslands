@@ -329,7 +329,6 @@ pages:
   - title: Your land and actions
     id: 4c6ef03f-b413-4a2b-9736-7f4df3afad33
     path: /confirm-land-and-actions
-    section: 28ad9fe7-5b31-4bc2-8a17-57593879ed39
     controller: ConfirmLandAndActionsPageController
     config:
       redirects:
