@@ -1,0 +1,5 @@
+services:
+
+  grants-ui-grasslands-tests:
+    volumes:
+      - ${PWD}/test/testconfig:/app/test/schemas:ro
