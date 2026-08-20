@@ -332,7 +332,6 @@ pages:
     controller: ConfirmLandAndActionsPageController
     config:
       redirects:
-        next: /you-must-have-consent
         addAnotherLandParcel: /select-land-parcel
 
   - title: You must have consent
