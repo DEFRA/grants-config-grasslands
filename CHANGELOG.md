@@ -1,5 +1,11 @@
 # grants-config-grasslands
 
+## 0.19.0
+
+### Minor Changes
+
+- 2b8cda3: Add the land and actions review page between action selection and consent, with pages to remove a parcel or an action, and allow more than one land parcel per application
+
 ## 0.18.0
 
 ### Minor Changes
