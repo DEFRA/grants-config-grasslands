@@ -28,7 +28,7 @@ curl -fsSL \
 LAND_GRANTS_TMP="$(mktemp -d)"
 git clone --depth 1 https://github.com/DEFRA/grants-config-land-grants.git "$LAND_GRANTS_TMP"
 mkdir -p test/testconfig/land-grants@0.0.0
-cp -r "$LAND_GRANTS_TMP/configurations/." test/testconfig/land-grants@0.0.0/
+cp -r "$LAND_GRANTS_TMP/configurations/land-grants/." test/testconfig/land-grants@0.0.0/
 rm -rf "$LAND_GRANTS_TMP"
 
 "$(dirname "$0")/docker-compose-smoke-test.sh"
