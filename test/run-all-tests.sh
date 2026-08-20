@@ -25,5 +25,10 @@ cp configurations/grasslands/gas/gas.json test/testconfig/gas.schema.json
 curl -fsSL \
   https://raw.githubusercontent.com/DEFRA/grants-ui/main/compose/config-broker/local-allowlists/grasslands.yaml \
   -o test/testconfig/grasslands@0.0.0/grants-ui/allowlist.yaml
+LAND_GRANTS_TMP="$(mktemp -d)"
+git clone --depth 1 https://github.com/DEFRA/grants-config-land-grants.git "$LAND_GRANTS_TMP"
+mkdir -p test/testconfig/land-grants@0.0.0
+cp -r "$LAND_GRANTS_TMP/configurations/." test/testconfig/land-grants@0.0.0/
+rm -rf "$LAND_GRANTS_TMP"
 
 "$(dirname "$0")/docker-compose-smoke-test.sh"
