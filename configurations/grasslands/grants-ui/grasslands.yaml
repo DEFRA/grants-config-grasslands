@@ -175,6 +175,12 @@ metadata:
       completed:
         text: 'Completed'
         classes: 'govuk-tag--green'
+    # select-land-parcel only reads as complete once actions are saved, not just selected.
+    completionRequirements:
+      /select-land-parcel:
+        requiresAnyItemWithNonEmptyKey:
+          collection: landParcels
+          key: actionsObj
   options:
     submitButtonText: Save and continue
 
