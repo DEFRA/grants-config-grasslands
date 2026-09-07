@@ -1,5 +1,11 @@
 # grants-config-grasslands
 
+## 0.20.0
+
+### Minor Changes
+
+- 99e8a0e: Added additional completion requirements for a task list step
+
 ## 0.19.0
 
 ### Minor Changes
