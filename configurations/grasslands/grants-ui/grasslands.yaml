@@ -13,11 +13,7 @@ metadata:
   supportEmail: ruralpayments@defra.gov.uk
   grantRedirectRules:
     preSubmission:
-      - toPath: /summary
-        requiresAnyItemWithNonEmptyKey:
-          collection: landParcels
-          key: actionsObj
-        incompleteToPath: /select-land-parcel
+      - toPath: /tasks
     excludedPaths: ['print-submitted-application']
   permissions:
     enforce: true
@@ -168,19 +164,11 @@ metadata:
     statuses:
       cannotStart:
         text: 'Cannot start yet'
-        classes: 'govuk-tag--grey'
       notStarted:
-        text: 'Not started'
+        text: 'Incomplete'
         classes: 'govuk-tag--blue'
       completed:
         text: 'Completed'
-        classes: 'govuk-tag--green'
-    # select-land-parcel only reads as complete once actions are saved, not just selected.
-    completionRequirements:
-      /select-land-parcel:
-        requiresAnyItemWithNonEmptyKey:
-          collection: landParcels
-          key: actionsObj
   options:
     submitButtonText: Save and continue
 
@@ -214,7 +202,7 @@ pages:
     config:
       width: full
 
-  - title: Check your land details
+  - title: Check your digital maps are correct
     id: 08ff02d3-c77e-45ff-8cee-5e2e5ccea7a4
     path: /check-your-land-details
     section: bb8b763d-38d2-4a70-8e02-80c53c3d95c9
@@ -225,18 +213,18 @@ pages:
         type: Html
         content: |
           <p class="govuk-body">
-            Before you continue with this application, check the land details on your digital maps are up to date. If they are not, this may prevent you from applying for the SFI actions you select. Read the guidance on <a class="govuk-link" href="https://www.gov.uk/guidance/digital-maps-in-the-rural-payments-service-check-and-change-mapping-updates" target="_blank" rel="noopener noreferrer">how to check your digital maps</a>.
+            Before you continue, check that the land details on your digital maps are up to date. If they are not, you may not be able to apply for the Grasslands actions you select. Read the guidance on <a class="govuk-link" href="https://www.gov.uk/guidance/digital-maps-in-the-rural-payments-service-check-and-change-mapping-updates" target="_blank" rel="noopener noreferrer">how to check your digital maps (opens in new tab)</a>.
           </p>
 
           <p class="govuk-body">Check that your digital maps show:</p>
           <ul class="govuk-list govuk-list--bullet">
           <li>all the land parcels you want to include in this application</li>
           <li>the correct total area (in hectares) for each land parcel</li>
-          <li>the correct land covers for each land parcel, for example, arable land, permanent grassland, permanent crops or relevant non-agricultural land cover</li>
+          <li>the correct land covers for each land parcel (for example, arable land, permanent grassland, permanent crops or relevant non-agricultural land cover)</li>
           </ul>
 
           <p class="govuk-body">
-          <a class="govuk-link" href="https://www.gov.uk/guidance/digital-maps-in-the-rural-payments-service-check-and-change-mapping-updates" target="_blank" rel="noopener noreferrer">Check your digital maps</a>
+          <a class="govuk-link" href="https://www.gov.uk/guidance/digital-maps-in-the-rural-payments-service-check-and-change-mapping-updates" target="_blank" rel="noopener noreferrer">Check your digital maps (opens in new tab)</a>
           </p>
       - name: confirmLandDetailsUpToDate
         id: 055fe807-11da-48a3-9c49-e1b64f7938e2
@@ -261,11 +249,15 @@ pages:
         type: Html
         content: |
           <p class="govuk-body">
-            As your digital maps are not up to date, <a class="govuk-link" href="https://www.gov.uk/guidance/request-rural-land-changes" target="_blank" rel="noopener noreferrer">request rural land changes</a> or <a class="govuk-link" href="https://www.gov.uk/government/publications/rural-land-register-map-and-land-cover-form-rle1" target="_blank" rel="noopener noreferrer">submit an RLE1 form</a> to ask us to update them. You need to submit your mapping update request as soon as possible.
+            As your digital maps are not up to date, <a class="govuk-link" href="https://www.gov.uk/guidance/request-rural-land-changes" target="_blank" rel="noopener noreferrer">request rural land changes</a> or <a class="govuk-link" href="https://www.gov.uk/government/publications/rural-land-register-map-and-land-cover-form-rle1" target="_blank" rel="noopener noreferrer">submit an RLE1 form</a> to ask us to update them.
+          </p>
+
+          <p class="govuk-body">
+            Submit your mapping update request as soon as possible. Your information will take at least 48 hours to update and could take longer.
           </p>
     condition: d98a42b2-5cc4-4ad7-9568-869461fe7739
 
-  - title: Management control of land
+  - title: Confirm you have management control of all the land in your application
     id: 653df07b-4208-4505-b5c7-7a8c65a3f01a
     path: /management-control-of-land
     section: bb8b763d-38d2-4a70-8e02-80c53c3d95c9
@@ -276,26 +268,26 @@ pages:
         type: Html
         content: |
           <p class="govuk-body">
-          You must have management control of the land in your SFI agreement for the duration of your selected SFI actions.
+          You must have management control of all the land in your application for as long as you are carrying out the actions on the land.
           </p>
 
           <p class="govuk-body">
-          If you occupy land under a short-term tenancy, you must only enter this land into your SFI agreement if you expect to have management control of it for the entire duration of your selected SFI actions.
+          If you have a short-term tenancy, only include land if you expect to have management control of it for the whole of that tenancy.
           </p>
 
           <p class="govuk-body">
-          Read the SFI scheme information on <a class="govuk-link" href="#">management control of land</a>.
+          Read the guidance on <a class="govuk-link" href="https://www.gov.uk/government/publications/sustainable-farming-incentive-2026-sfi26/sfi26-scheme-rules-and-guidance#check-youll-have-management-control-of-the-land" target="_blank" rel="noopener noreferrer">management control of land (opens in a new tab)</a>.
           </p>
       - name: managementControl
         id: b00eb6d7-8e45-45d1-94d1-7fa085a179f5
         type: YesNoField
-        title: Select if you will have the required management control of the land in this application
+        title: Do you have management control of all the land?
         shortDescription: Confirm management control of the land
         options:
           required: true
           classes: govuk-radios
           customValidationMessages:
-            any.required: Select if you will have the required management control of the land in this application
+            any.required: Confirm if you have management control of the land in this application
 
   - title: You are not eligible to apply
     id: 083a5236-182d-4ddb-b90e-2c3567d17cd5
@@ -308,11 +300,11 @@ pages:
         title: Html
         type: Html
         content: |
-          <p class="govuk-body">As your last answer was 'no', you are not eligible to apply for an SFI agreement. Select 'back' to change your answer.</p>
+          <p class="govuk-body">You must have management control of the land you want to include in your application. If you want to change your answer, go back to management control of land.</p>
     condition: d7dab0a1-c91e-4212-b1e0-d86bc9d5151d
 
   # Select land and actions --------------------------------------------------------------------------------------------
-  - title: Select land for your actions
+  - title: Select your land parcels
     id: a1b2c3d4-0001-0001-0001-000000000003
     path: /select-land-parcel
     section: 28ad9fe7-5b31-4bc2-8a17-57593879ed39
@@ -322,7 +314,7 @@ pages:
         id: a1b2c3d4-0001-0001-0001-000000000010
         type: HiddenField
         title: Land parcel
-        shortDescription: Select the land and actions you want to apply for
+        shortDescription: Select the land and the actions you want to apply for
         options:
           required: false
 
@@ -332,7 +324,7 @@ pages:
     section: 28ad9fe7-5b31-4bc2-8a17-57593879ed39
     controller: SelectActionsPageController
 
-  - title: Your land and actions
+  - title: Review land parcels and actions
     id: 4c6ef03f-b413-4a2b-9736-7f4df3afad33
     path: /confirm-land-and-actions
     controller: ConfirmLandAndActionsPageController
@@ -354,11 +346,6 @@ pages:
     controller: CheckResponsesPageController
     config:
       width: full
-      additionalSections:
-        - title: Payment summary
-          items:
-            - title: Annual payment for all parcels
-              stateValue: totalPayment
 
   - title: Submit your application
     id: 18514e4f-8615-4585-81ae-6e74e5d45def
@@ -366,8 +353,8 @@ pages:
     section: ade97a6e-1852-4f15-9624-1613c6dcc69b
     controller: DeclarationPageController
     config:
-      submitButtonText: Confirm and submit
-      showSupportDetails: true
+      submitButtonText: I agree - submit my application
+      showSupportDetails: false
     components:
       - name: declarationContent
         id: 695fdab7-f102-4c51-882c-f2d0082dab61
@@ -375,12 +362,20 @@ pages:
         content: |
           <p class="govuk-body">By submitting your application, you confirm that:</p>
           <ul class="govuk-list govuk-list--bullet">
-          <li>the information you have provided is correct to the best of your knowledge</li>
-          <li>you have read and understand the information in the <a href="#" class="govuk-link" target="_blank">Grasslands 2026 guidance (opens in new tab)</a> about this application</li>
-          <li>you are capable of fulfilling the obligations which will be required of you if your application is successful</li>
-          <li>you agree to let any authorised person access the land and relevant records related to this application so they can inspect or audit them to verify the information you’ve provided to the Rural Payments Agency (RPA) and to check that you are complying with this agreement</li>
-          <li>you agree to disclose all information relevant to this application, provide any additional information as may be required by the RPA, field officers or auditors and co-operate with or take part in any economic, environmental or other monitoring and evaluation of the scheme (including any research and development studies) conducted by RPA or by anyone appointed by them for that purpose</li>
+          <li>the information in your application is correct</li>
+          {% if 'sssi' in pageConsents %}
+          <li>you will get consent for actions involving sites of special scientific interest (SSSI)</li>
+          {% endif %}
+          {% if 'hefer' in pageConsents %}
+          <li>you will request a Historic Environment Farm Environment Record (HEFER) if required</li>
+          {% endif %}
+          <li>you have management control of the land for the required period</li>
+          <li>you will meet the requirements for the Grasslands actions you have applied for</li>
           </ul>
+          <p class="govuk-body">It’s your responsibility to check that land (including landscape features) is eligible for your Grasslands actions. Payments may be reduced if the RPA finds ineligible land, features or incompatible actions.</p>
+          <p class="govuk-body">If you’ve applied for Grasslands actions on land that has a conditional exemption from Inheritance Tax, you will not be paid for activities which duplicate, or conflict with, your undertakings under that exemption.</p>
+          <p class="govuk-body">If you’ve applied for Grasslands actions on land owned by a public body, you will not be paid for activities which conflict with, or duplicate, the public body’s statutory duties.</p>
+          <p class="govuk-body">You must make sure that you have management control of the land for the duration of the actions.</p>
 
   # Post submission pages ----------------------------------------------------------------------------------------------
   - title: Confirmation
@@ -388,7 +383,7 @@ pages:
     path: /confirmation
     controller: ConfirmationPageController
     config:
-      panelTitle: 'Application submitted'
+      panelTitle: 'Application complete'
       panelText: 'Your application number'
     components:
       - name: confirmationContent
@@ -396,9 +391,9 @@ pages:
         type: Html
         content: |
           <h2 class="govuk-heading-m">What happens next</h2>
-          <p class="govuk-body">Thank you for submitting your SFI application.</p>
-          <p class="govuk-body">We will notify you when your SFI agreement offer is available for you to check in the Rural Payments service.</p>
-          <p class="govuk-body"><a class="govuk-link" href="/{{SLUG}}/print-submitted-application" target="_blank">View / Print submitted application (opens in new tab)</a></p>
+          <p class="govuk-body">Thank you for submitting your Grasslands application.</p>
+          <p class="govuk-body">We’ll email you when your agreement offer is ready for you to check in the Farm and Land Service.</p>
+          <p class="govuk-body"><a class="govuk-link" href="/{{SLUG}}/print-submitted-application" target="_blank">View and print submitted application (opens in new tab)</a></p>
           <p class="govuk-body"><a href="https://fcp-sfd-frontend.{{cdpEnvironment}}.cdp-int.defra.cloud/" class="govuk-button">Back to Farm and Land Service</a></p>
 
   - title: PrintSubmittedApplication
@@ -442,5 +437,4 @@ conditions:
         type: BooleanValue
         value: false
 
-startPage: /check-details
 schema: 2
