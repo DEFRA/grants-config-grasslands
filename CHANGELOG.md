@@ -1,5 +1,11 @@
 # grants-config-grasslands
 
+## 0.21.0
+
+### Minor Changes
+
+- 8f66609: Align with prototype
+
 ## 0.20.0
 
 ### Minor Changes
