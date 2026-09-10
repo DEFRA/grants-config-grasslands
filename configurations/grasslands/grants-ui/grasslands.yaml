@@ -8,6 +8,7 @@ metadata:
     - 'CLIG3'
     - 'CSAM3'
     - 'SCR2'
+    - 'HEF1'
   singleParcelSubmission: false
   referenceNumberPrefix: GLD
   supportEmail: ruralpayments@defra.gov.uk
