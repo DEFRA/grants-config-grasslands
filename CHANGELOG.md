@@ -1,5 +1,11 @@
 # grants-config-grasslands
 
+## 0.22.0
+
+### Minor Changes
+
+- b71fa04: Enable HEF1 and WBD1 actions for the grasslands grant journey.
+
 ## 0.21.0
 
 ### Minor Changes
