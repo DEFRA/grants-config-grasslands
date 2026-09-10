@@ -1,5 +1,11 @@
 # grants-config-grasslands
 
+## 0.23.0
+
+### Minor Changes
+
+- bf5769e: TGC-1559: Enable CNUM2 (Legumes on improved grassland) in the grasslands grant journey.
+
 ## 0.22.0
 
 ### Minor Changes
