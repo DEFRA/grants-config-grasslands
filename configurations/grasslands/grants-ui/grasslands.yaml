@@ -10,6 +10,7 @@ metadata:
     - 'SCR2'
     - 'HEF1'
     - 'WBD1'
+    - 'CNUM2'
   singleParcelSubmission: false
   referenceNumberPrefix: GLD
   supportEmail: ruralpayments@defra.gov.uk
