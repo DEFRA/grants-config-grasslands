@@ -1,5 +1,11 @@
 # grants-config-grasslands
 
+## 0.23.1
+
+### Patch Changes
+
+- 9fa6fab: TGC-1645: Show the details confirmation answer on the Grasslands check answers page.
+
 ## 0.23.0
 
 ### Minor Changes
