@@ -1,5 +1,11 @@
 # grants-config-grasslands
 
+## 0.23.3
+
+### Patch Changes
+
+- 68f1b57: TGC-1634: Configure consent guidance links for the flat select-actions page.
+
 ## 0.23.2
 
 ### Patch Changes
