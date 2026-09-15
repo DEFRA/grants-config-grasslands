@@ -1,5 +1,11 @@
 # grants-config-grasslands
 
+## 0.23.2
+
+### Patch Changes
+
+- df23be9: TGC-1645: Use SBI in business details, remove the unavailable digital maps link, and correct the land update guidance URLs.
+
 ## 0.23.1
 
 ### Patch Changes
