@@ -128,7 +128,7 @@ metadata:
             sourcePath: business.email.address
       - title: Reference numbers
         fields:
-          - label: Single Business Identifier (SBI)
+          - label: SBI
             sourceType: credentials
             sourcePath: sbi
           - label: VAT registration number
@@ -226,9 +226,6 @@ pages:
           <li>the correct land covers for each land parcel (for example, arable land, permanent grassland, permanent crops or relevant non-agricultural land cover)</li>
           </ul>
 
-          <p class="govuk-body">
-          <a class="govuk-link" href="https://www.gov.uk/guidance/digital-maps-in-the-rural-payments-service-check-and-change-mapping-updates" target="_blank" rel="noopener noreferrer">Check your digital maps (opens in new tab)</a>
-          </p>
       - name: confirmLandDetailsUpToDate
         id: 055fe807-11da-48a3-9c49-e1b64f7938e2
         type: YesNoField
@@ -252,7 +249,7 @@ pages:
         type: Html
         content: |
           <p class="govuk-body">
-            As your digital maps are not up to date, <a class="govuk-link" href="https://www.gov.uk/guidance/request-rural-land-changes" target="_blank" rel="noopener noreferrer">request rural land changes</a> or <a class="govuk-link" href="https://www.gov.uk/government/publications/rural-land-register-map-and-land-cover-form-rle1" target="_blank" rel="noopener noreferrer">submit an RLE1 form</a> to ask us to update them.
+            As your digital maps are not up to date, <a class="govuk-link" href="https://www.gov.uk/guidance/rural-payments-service-how-to-register-land-and-update-digital-maps" target="_blank" rel="noopener noreferrer">request rural land changes</a> or <a class="govuk-link" href="https://www.gov.uk/government/publications/tell-the-rural-payments-agency-about-land-changes-and-entitlement-transfers" target="_blank" rel="noopener noreferrer">submit an RLE1 form</a> to ask us to update them.
           </p>
 
           <p class="govuk-body">
