@@ -323,6 +323,12 @@ pages:
     path: /select-actions-for-land-parcel
     section: 28ad9fe7-5b31-4bc2-8a17-57593879ed39
     controller: SelectActionsPageController
+    config:
+      links:
+        sfi_hefer:
+          href: https://www.gov.uk/government/publications/sustainable-farming-incentive-2026-sfi26/sfi26-scheme-rules-and-guidance#how-to-request-an-sfi-hefer
+        sssi_consent:
+          href: https://www.gov.uk/government/publications/sustainable-farming-incentive-2026-sfi26/sfi26-scheme-rules-and-guidance#sssi-consent
 
   - title: Review land parcels and actions
     id: 4c6ef03f-b413-4a2b-9736-7f4df3afad33
