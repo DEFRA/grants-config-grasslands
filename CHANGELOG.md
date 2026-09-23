@@ -1,5 +1,47 @@
 # grants-config-grasslands
 
+## 0.23.3
+
+### Patch Changes
+
+- 68f1b57: TGC-1634: Configure consent guidance links for the flat select-actions page.
+
+## 0.23.2
+
+### Patch Changes
+
+- df23be9: TGC-1645: Use SBI in business details, remove the unavailable digital maps link, and correct the land update guidance URLs.
+
+## 0.23.1
+
+### Patch Changes
+
+- 9fa6fab: TGC-1645: Show the details confirmation answer on the Grasslands check answers page.
+
+## 0.23.0
+
+### Minor Changes
+
+- bf5769e: TGC-1559: Enable CNUM2 (Legumes on improved grassland) in the grasslands grant journey.
+
+## 0.22.0
+
+### Minor Changes
+
+- b71fa04: Enable HEF1 and WBD1 actions for the grasslands grant journey.
+
+## 0.21.0
+
+### Minor Changes
+
+- 8f66609: Align with prototype
+
+## 0.20.0
+
+### Minor Changes
+
+- 99e8a0e: Added additional completion requirements for a task list step
+
 ## 0.19.0
 
 ### Minor Changes
