@@ -1,5 +1,11 @@
 # grants-config-grasslands
 
+## 0.24.1
+
+### Patch Changes
+
+- acb4dcc: Adding missing description in config metadata
+
 ## 0.24.0
 
 ### Minor Changes
