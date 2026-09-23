@@ -1,5 +1,11 @@
 # grants-config-grasslands
 
+## 0.24.0
+
+### Minor Changes
+
+- b3ef54d: Rename surveyLabel to shortName in config
+
 ## 0.23.3
 
 ### Patch Changes
