@@ -1,5 +1,8 @@
 services:
 
   grants-ui-grasslands-tests:
-    volumes:
-      - ${PWD}/test/testconfig:/app/test/schemas:ro
+    image: grants-config-grasslands-grants-ui-tests
+    pull_policy: build
+    build:
+      context: ${PWD}
+      dockerfile: test/grants-ui/Dockerfile
