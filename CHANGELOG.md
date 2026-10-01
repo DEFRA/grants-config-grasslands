@@ -1,5 +1,11 @@
 # grants-config-grasslands
 
+## 0.24.2
+
+### Patch Changes
+
+- f9a62f1: Co-locate journey tests with config
+
 ## 0.24.1
 
 ### Patch Changes
