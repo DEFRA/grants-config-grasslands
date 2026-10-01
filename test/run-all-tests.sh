@@ -21,7 +21,6 @@ fi
 mkdir -p test/testconfig
 cp -r configurations/grasslands/ test/testconfig/grasslands@0.0.0
 cp $(dirname "$0")/release.yml test/testconfig/
-cp configurations/grasslands/gas/gas.json test/testconfig/gas.schema.json
 curl -fsSL \
   https://raw.githubusercontent.com/DEFRA/grants-ui/main/compose/config-broker/local-allowlists/grasslands.yaml \
   -o test/testconfig/grasslands@0.0.0/grants-ui/allowlist.yaml
