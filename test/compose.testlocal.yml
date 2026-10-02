@@ -1,6 +1,6 @@
 services:
 
-  grants-ui-grasslands-tests:
+  grants-config-grasslands-grants-ui-tests:
     image: grants-config-grasslands-grants-ui-tests
     pull_policy: build
     build:
