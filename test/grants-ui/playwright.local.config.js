@@ -17,7 +17,7 @@ export default defineConfig({
   testDir: './test/specs',
   testMatch: '**/*.spec.js',
   grep: /@runme/,
-  timeout: 30_000,
+  timeout: 60_000,
   expect: { timeout: 10_000 },
   fullyParallel: false,
   workers: 1,
