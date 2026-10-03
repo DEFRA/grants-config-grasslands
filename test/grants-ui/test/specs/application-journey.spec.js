@@ -355,6 +355,63 @@ test.describe('Grasslands application', () => {
           ).toContainText('£2,195.50')
         })
 
+        await page
+          .getByRole('button', { name: 'Add another land parcel' })
+          .click()
+      })
+
+      await test.step('confirm-land-and-actions -> select-land-parcel (building parcel)', async () => {
+        await expect(page).toHaveURL(/\/grasslands\/select-land-parcel/)
+        await expect(page.getByRole('heading', { level: 1 })).toContainText(
+          'Select your land parcels'
+        )
+
+        await selectParcelOnMap(page, 'SD8645-4278', 0.2156)
+        await page.locator('#map-select-continue').click()
+      })
+
+      await test.step('select-actions-for-land-parcel (building parcel)', async () => {
+        await expect(page).toHaveURL(
+          /\/grasslands\/select-actions-for-land-parcel\?parcelId=SD8645-4278/
+        )
+        await expect(page.getByRole('heading', { level: 1 })).toContainText(
+          'Select actions for this land parcel'
+        )
+
+        await test.step('select HEF1', async () => {
+          await expect(
+            page.locator('#landActionQuantity_HEF1-hint')
+          ).toHaveText('2107 square metres available')
+
+          const hef1Checkbox = page.getByRole('checkbox', { name: /HEF1/ })
+          await hef1Checkbox.click()
+          await expect(hef1Checkbox).toBeChecked()
+
+          const landGrantsResponse = page.waitForResponse((res) =>
+            res.url().includes('/api/land-grants/actions/')
+          )
+          await page.locator('#landActionQuantity_HEF1').fill('100')
+          await page.locator('#landActionQuantity_HEF1').blur()
+          await landGrantsResponse
+        })
+
+        await page.getByRole('button', { name: 'Save and continue' }).click()
+      })
+
+      await test.step('select-actions-for-land-parcel -> confirm-land-and-actions (all parcels)', async () => {
+        await expect(page).toHaveURL('/grasslands/confirm-land-and-actions')
+
+        await test.step('building parcel summary shows HEF1', async () => {
+          const buildingTable = page.getByRole('table', {
+            name: /SD8645.?4278/
+          })
+          await expect(
+            buildingTable.getByRole('row', {
+              name: /Maintain weatherproof traditional farm or forestry buildings \(HEF1\)/
+            })
+          ).toContainText('100 sqm')
+        })
+
         await page.getByRole('button', { name: 'Save and continue' }).click()
       })
 

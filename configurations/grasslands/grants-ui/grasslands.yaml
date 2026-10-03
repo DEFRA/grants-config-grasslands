@@ -7,10 +7,11 @@ metadata:
   enabledInProd: true
   enabledLandActions:
     - 'CLIG3'
+    - 'CNUM2'
     - 'CSAM3'
+    - 'HEF1'
     - 'SCR2'
     - 'WBD1'
-    - 'CNUM2'
   singleParcelSubmission: false
   referenceNumberPrefix: GLD
   supportEmail: ruralpayments@defra.gov.uk
