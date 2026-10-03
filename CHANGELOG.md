@@ -1,5 +1,11 @@
 # grants-config-grasslands
 
+## 0.25.0
+
+### Minor Changes
+
+- 6863776: Enable HEF1
+
 ## 0.24.2
 
 ### Patch Changes

@@ -1,6 +1,6 @@
 {
   "name": "grants-config-grasslands",
-  "version": "0.24.2",
+  "version": "0.25.0",
   "description": "grants-config-grasslands",
   "main": "src/index.js",
   "type": "module",
