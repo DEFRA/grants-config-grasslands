@@ -1,5 +1,11 @@
 # grants-config-grasslands
 
+## 0.26.0
+
+### Minor Changes
+
+- e0b9190: Suffix all actions with _26
+
 ## 0.25.0
 
 ### Minor Changes
