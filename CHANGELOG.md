@@ -1,5 +1,11 @@
 # grants-config-grasslands
 
+## 0.26.1
+
+### Patch Changes
+
+- 632e8e6: Remove unused CDP Playwright config from grants-ui journey tests; grants-ui-grasslands-tests owns its own
+
 ## 0.26.0
 
 ### Minor Changes
