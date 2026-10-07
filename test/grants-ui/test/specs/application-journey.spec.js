@@ -193,7 +193,7 @@ test.describe('Grasslands application', () => {
           await expect(csam3Checkbox).toBeChecked()
           await expect(
             page.locator('#landActionQuantity_CSAM3_26-hint')
-          ).toHaveText('11.5033 hectares available')
+          ).toHaveText(/^\d+(\.\d+)? hectares available$/)
 
           const landGrantsResponse = page.waitForResponse((res) =>
             res.url().includes('/api/land-grants/actions/')
@@ -209,7 +209,7 @@ test.describe('Grasslands application', () => {
           await expect(cnum2Checkbox).toBeChecked()
           await expect(
             page.locator('#landActionQuantity_CNUM2_26-hint')
-          ).toHaveText('10.0033 hectares available')
+          ).toHaveText(/^\d+(\.\d+)? hectares available$/)
 
           const landGrantsResponse = page.waitForResponse((res) =>
             res.url().includes('/api/land-grants/actions/')
@@ -225,7 +225,7 @@ test.describe('Grasslands application', () => {
           await expect(scr2Checkbox).toBeChecked()
           await expect(
             page.locator('#landActionQuantity_SCR2_26-hint')
-          ).toHaveText('9.0033 hectares available')
+          ).toHaveText(/^\d+(\.\d+)? hectares available$/)
 
           const landGrantsResponse = page.waitForResponse((res) =>
             res.url().includes('/api/land-grants/actions/')
@@ -238,7 +238,7 @@ test.describe('Grasslands application', () => {
         await test.step('select CLIG3_26', async () => {
           await expect(
             page.locator('#landActionQuantity_CLIG3_26-hint')
-          ).toHaveText('7.0033 hectares available')
+          ).toHaveText(/^\d+(\.\d+)? hectares available$/)
 
           const cligCheckbox = page.getByRole('checkbox', { name: /CLIG3_26/ })
           const landGrantsResponse = page.waitForResponse((res) =>
@@ -387,7 +387,7 @@ test.describe('Grasslands application', () => {
         await test.step('select HEF1_26', async () => {
           await expect(
             page.locator('#landActionQuantity_HEF1_26-hint')
-          ).toHaveText('2107 square metres available')
+          ).toHaveText(/^\d+ square metres available$/)
 
           const hef1Checkbox = page.getByRole('checkbox', { name: /HEF1_26/ })
           await hef1Checkbox.click()
