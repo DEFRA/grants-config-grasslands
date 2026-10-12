@@ -1,5 +1,8 @@
 dev:
-  allowAll: true
+  crns:
+    - '1062311181'
+  sbis:
+    - '106238911'
 
 test:
   allowAll: true
