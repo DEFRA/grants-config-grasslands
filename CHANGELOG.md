@@ -1,5 +1,11 @@
 # grants-config-grasslands
 
+## 0.27.0
+
+### Minor Changes
+
+- e83c6d1: Allowlist
+
 ## 0.26.1
 
 ### Patch Changes
