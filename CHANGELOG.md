@@ -1,5 +1,11 @@
 # grants-config-grasslands
 
+## 0.28.0
+
+### Minor Changes
+
+- e83c6d1: Revert allowlist deletion
+
 ## 0.27.1
 
 ### Patch Changes
