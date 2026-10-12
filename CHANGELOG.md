@@ -1,5 +1,11 @@
 # grants-config-grasslands
 
+## 0.27.1
+
+### Patch Changes
+
+- 86c179a: Delete allowlist
+
 ## 0.27.0
 
 ### Minor Changes
