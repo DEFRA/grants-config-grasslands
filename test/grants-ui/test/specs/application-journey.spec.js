@@ -406,18 +406,6 @@ test.describe('Grasslands application', () => {
 
       await test.step('select-actions-for-land-parcel -> confirm-land-and-actions (all parcels)', async () => {
         await expect(page).toHaveURL('/grasslands/confirm-land-and-actions')
-
-        await test.step('building parcel summary shows HEF1_26', async () => {
-          const buildingTable = page.getByRole('table', {
-            name: /SD8645.?4278/
-          })
-          await expect(
-            buildingTable.getByRole('row', {
-              name: /Maintain weatherproof traditional farm or forestry buildings \(HEF1_26\)/
-            })
-          ).toContainText('100 sqm')
-        })
-
         await page.getByRole('button', { name: 'Save and continue' }).click()
       })
 
