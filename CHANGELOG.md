@@ -1,5 +1,11 @@
 # grants-config-grasslands
 
+## 0.28.1
+
+### Patch Changes
+
+- 0dbab88: Remove HEF1 square-metre quantity check from the confirm land and actions page in grants-ui journey tests
+
 ## 0.28.0
 
 ### Minor Changes
