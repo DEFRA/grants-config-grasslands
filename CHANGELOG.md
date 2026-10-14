@@ -1,5 +1,11 @@
 # grants-config-grasslands
 
+## 0.28.3
+
+### Patch Changes
+
+- ace9e41: Restore allow list allowAll in Dev
+
 ## 0.28.2
 
 ### Patch Changes
