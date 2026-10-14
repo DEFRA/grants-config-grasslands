@@ -1,5 +1,11 @@
 # grants-config-grasslands
 
+## 0.28.4
+
+### Patch Changes
+
+- 668f59e: Remove CRNs from existing allowlist
+
 ## 0.28.3
 
 ### Patch Changes
