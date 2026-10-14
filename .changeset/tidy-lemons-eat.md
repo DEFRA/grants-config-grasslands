@@ -1,5 +1,5 @@
 ---
-'grants-config-grasslands': minor
+'grants-config-grasslands': patch
 ---
 
 Remove CRNs from existing allowlist
