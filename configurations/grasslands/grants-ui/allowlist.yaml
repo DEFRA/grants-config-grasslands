@@ -1,8 +1,5 @@
 dev:
-  sbis:
-    - '107214733'
-    - '106514040'
-    - '119000002'
+  allowAll: true
 
 test:
   allowAll: true
