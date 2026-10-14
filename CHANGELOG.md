@@ -1,5 +1,11 @@
 # grants-config-grasslands
 
+## 0.28.2
+
+### Patch Changes
+
+- ace9e41: Test allowlist changes to support SBI-only
+
 ## 0.28.1
 
 ### Patch Changes
