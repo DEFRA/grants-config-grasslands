@@ -249,16 +249,16 @@ test.describe('Grasslands application', () => {
           await expect(cligCheckbox).toBeChecked()
         })
 
-        await test.step('all actions now show 0 hectares are available', async () => {
+        await test.step('all actions now show 0.0000 hectares are available', async () => {
           await expect(
             page.locator('#landActionQuantity_CSAM3_26-hint')
-          ).toHaveText('0 hectares available')
+          ).toHaveText('0.0000 hectares available')
           await expect(
             page.locator('#landActionQuantity_CNUM2_26-hint')
-          ).toHaveText('0 hectares available')
+          ).toHaveText('0.0000 hectares available')
           await expect(
             page.locator('#landActionQuantity_SCR2_26-hint')
-          ).toHaveText('0 hectares available')
+          ).toHaveText('0.0000 hectares available')
           await expect(
             page.locator('#landActionQuantity_CLIG3_26-hint')
           ).toHaveText('0.0000 hectares available')
