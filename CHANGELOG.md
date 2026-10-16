@@ -1,5 +1,11 @@
 # grants-config-grasslands
 
+## 0.28.5
+
+### Patch Changes
+
+- 66df394: TGC-1738 Hectares AA should be 4 decimal places
+
 ## 0.28.4
 
 ### Patch Changes
