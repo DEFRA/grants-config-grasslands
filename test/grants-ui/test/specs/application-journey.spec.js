@@ -182,7 +182,6 @@ test.describe('Grasslands application', () => {
             'CSAM3_26',
             'CNUM2_26',
             'CLIG3_26',
-            'WBD1_26',
             'SCR2_26'
           ])
         })
