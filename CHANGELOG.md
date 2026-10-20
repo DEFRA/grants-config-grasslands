@@ -1,5 +1,11 @@
 # grants-config-grasslands
 
+## 0.29.0
+
+### Minor Changes
+
+- 4ad338c: Remove WBD1_26 expectation from test due to use of isAvailable flag
+
 ## 0.28.5
 
 ### Patch Changes
