@@ -11,6 +11,4 @@ ext-test:
   allowAll: true
 
 prod:
-  sbis:
-    - '201145910'
-    - '201145921'
+  sbis: []
