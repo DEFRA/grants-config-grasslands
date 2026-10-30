@@ -1,5 +1,11 @@
 # grants-config-grasslands
 
+## 0.30.0
+
+### Minor Changes
+
+- 1eeb063: Source allowlist from external
+
 ## 0.29.0
 
 ### Minor Changes
