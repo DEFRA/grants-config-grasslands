@@ -16,8 +16,8 @@ const gasConfig = JSON.parse(
   )
 )
 
-const CRN = '1103171356'
-const SBI = '107214733'
+const CRN = '9000000036'
+const SBI = '800000027'
 const GRANT_CODE = 'grasslands'
 
 test.describe('Grasslands application', () => {
