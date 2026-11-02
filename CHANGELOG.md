@@ -1,5 +1,11 @@
 # grants-config-grasslands
 
+## 0.30.1
+
+### Patch Changes
+
+- da19227: Synthetic refs in journey test
+
 ## 0.30.0
 
 ### Minor Changes
