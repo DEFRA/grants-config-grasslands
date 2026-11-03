@@ -1,5 +1,11 @@
 # grants-config-grasslands
 
+## 0.30.2
+
+### Patch Changes
+
+- 21bd4b1: Enable GRH12_26 (Manage rough grassland for upland breeding waders) in the Grasslands journey
+
 ## 0.30.1
 
 ### Patch Changes
