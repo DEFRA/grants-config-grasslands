@@ -1,5 +1,11 @@
 # grants-config-grasslands
 
+## 0.30.3
+
+### Patch Changes
+
+- 54711c2: TGC-1869 - Upgrade nodejs
+
 ## 0.30.2
 
 ### Patch Changes
